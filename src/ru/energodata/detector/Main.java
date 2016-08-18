@@ -1,4 +1,4 @@
-package ru.energodata;
+package ru.energodata.detector;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,15 +26,19 @@ public class Main {
                 for (File pdfFile : pdfFiles) {
                     pdfnames.add(pdfFile.getName().substring(0, pdfFile.getName().length() - 4));
                 }
+                System.out.println(".xml and .pdf files found.");
                 System.out.println(".pdf files without .xml pair:");
                 for (String pdfname : pdfnames) {
                     if (xmlnames.stream().noneMatch(pdfname::equals)) {
                         System.out.println(pdfname + ".pdf");
                     }
+                    else {
+                        System.out.println("No matches.");
+                    }
                 }
             }
             else{
-                System.out.println(".xml-.pdf pairs not found");
+                System.out.println(".xml and .pdf files not found");
             }
         }
     }
